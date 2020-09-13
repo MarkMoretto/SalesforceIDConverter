@@ -435,3 +435,4 @@ $RECYCLE.BIN/
 
 ## Dev specifics
 dev*.*
+.vscode/
