@@ -5,12 +5,12 @@
     ViewData["Title"] = "Converter";
 }
 
-<h2>Salesforce ID Converter Home</h2>
+<h2>Salesforce ID Converter Home</h2> &nbsp;
 
-<p>You entered: </p>
-<strong>@ViewData["confirmation"]</strong>
-
-<h3>@Model.SFID</h3>
+@if (ViewData["confirmation"] != null) {
+    <h3>You entered: ViewData["confirmation"]</h3> 
+    <p>Model.SFID</p>
+}
 
 
 <form method="POST">

@@ -9,8 +9,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SalesforceIDConverter.Pages {
 
-    [BindProperties]
     public class ConverterModel : PageModel {
+        
+        [BindProperty]
         [StringLength(15, ErrorMessage="String cannot exceed 15 characters.")]
         public string SFID { get; set; }
         
