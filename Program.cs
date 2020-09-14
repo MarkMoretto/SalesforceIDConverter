@@ -7,20 +7,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace SalesforceIDConverter
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
+namespace SalesforceIDConverter {
+    public class Program {
+        public static void Main(string[] args) {
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            .ConfigureWebHostDefaults(webBuilder => {
+                webBuilder.UseStartup<Startup>();
+            });
     }
 }
