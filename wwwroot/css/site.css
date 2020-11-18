@@ -12,11 +12,31 @@ a {
   color: #0366d6;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.btn-submit {
+  color: #1c455e;
+  background-color: #ffffff;
+  border-color: #1b6ec2;
 }
+
+.btn-submit:hover {
+  color: #1b6ec2;
+  background-color: #ffffff;
+  border-color: #72ced8;
+}
+
+.btn-cancel {
+  color: #99051f;
+  background-color: #ffffff;
+  border-color: #f91400;
+}
+
+
+.btn-cancel:hover {
+    color: #f91400;
+    background-color: #ffffff;
+    border-color: #72ced8;
+}
+
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;

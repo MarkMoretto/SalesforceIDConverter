@@ -2,9 +2,16 @@
 /*
 Salesforce ID converter pack.
 
-Sample ID:
+
+Salesforce ID samples:
+1. 
     Input: 9062I000000ITnk
     Expected Output: 9062I000000ITnkQAG
+
+2. 
+    Input: 90630000000gtfA
+    Expected: 90630000000gtfAAAQ
+
 */
 
 
