@@ -22,6 +22,25 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "dotnet run": {
+      "commandName": "Project",
+      "commandLineArgs": "--server.urls http://*:8080",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:8080/",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "dotnet watch": {
+      "executablePath": "C:/Program Files/dotnet/dotnet.exe",
+      "commandLineArgs": "watch run --server.urls http://*:8080",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:8080/",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_WATCH_ITERATION": 1
+      }
     }
   }
 }

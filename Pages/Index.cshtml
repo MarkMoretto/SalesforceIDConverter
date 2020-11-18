@@ -5,12 +5,99 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the Salesforce ID Converter!</h1>
 </div>
 
-<form>
-    <p>
-        Salesforce ID: <input type="text" id="id-input"/>
-    </p>
-</form>
+<div>
+    <div id="input-section">
+        <label for="sfid">Salesforce ID: </label>
+        <!--<input type="text" id="id-input" name="sfid" onkeypress="updateOutput();" />-->
+        <input type="text" id="id-input" name="sfid" />
+        <br />
+        <label for="sfid-out">New Salesforce ID: </label>
+        <input type="text" id="id-output" name="sfid-out" disabled="true" value="" />
+        <span id="sample-output"></span>
+    </div>
+    <div>
+        <label>&nbsp;</label>
+        <!--<input type="submit" value="Submit" class="submit" onclick="ConvertID();" />-->
+        <input type="button" value="Submit" onclick="ConvertID(); return false;" />
+        <input type="button" value="Clear" onclick="clearInputs(); return false;"/>
+    </div>
+</div>
+
+
+<script>
+    /*
+    Salesforce ID sample:
+        Input: 9062I000000ITnk
+        Expected Output: 9062I000000ITnkQAG
+document.querySelector("div#input-section").querySelectorAll("input").forEach( g => g.value = null );
+        Input: 90630000000gtfA
+        Expected: 90630000000gtfAAAQ
+    */
+
+    const inputEl = document.querySelector("#id-input");
+    const outputEl = document.querySelector("#sample-output");
+    const inputSection = document.querySelector("div#input-section");
+
+
+    function clearInputs() {
+        inputSection.querySelectorAll("input").forEach( g => g.value = null );
+        inputEl.focus();
+    }
+
+
+    // Set alphanumeric list
+    let codeList = [];
+    function setCodeList() {
+
+        let j = 65;
+        let k = 0;
+        const alphaStopIdx = 91;
+        while (j < 97) { 
+            j < alphaStopIdx ? codeList.push(String.fromCharCode(j)) : codeList.push(`${j - alphaStopIdx}`);
+            j++;
+            k++;
+        }
+    }
+
+    function IdConverter(SfidObj) {
+        if (SfidObj.length === 15) {
+            let i = 0;
+            const stepsize = 5;
+            let letters = "";
+
+            while (i < SfidObj.length) {
+                let chunk = SfidObj.slice(i, i + stepsize);
+                let idx = 0;
+                let tot = 0;
+                chunk.split("").forEach( el => {
+                    tot += el.isUpper ? Math.pow(2, idx) : 0;
+                    idx++;
+                });
+                letters += codeList[tot];
+                i += stepsize;
+            }
+
+            SfidObj += letters;
+            console.assert(SfidObj.length === 18, `Error: NewId character count mismatch.`);
+            
+        }
+        return SfidObj;
+    }
+
+    function ConvertID() {
+        let newID = IdConverter(inputEl.value);
+        document.querySelector("#id-output").value = newID;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        setCodeList();
+    });
+
+    //function updateOutput() {
+    //    outputEl.textContent = (inputEl.value === "" || inputEl.value === null ) ? "" : `You typed: ${inputEl.value}`; 
+    //}    
+
+</script>
