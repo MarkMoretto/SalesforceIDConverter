@@ -1,5 +1,8 @@
 # SalesforceIDConverter
-Simple app for conversion of 15- and 18-character Salesforce IDs.
+Simple app for conversion of 15-character Salesforce IDs to 18-character IDs.
 
-## Razor Syntax
-https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-5.0#rendering-html
+To run:
+1. Have dotnet installed since this isn't a production version.
+2. Clone repo
+3. Restore
+4. Double-click `run-app.cmd`
