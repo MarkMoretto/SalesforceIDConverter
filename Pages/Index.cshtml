@@ -29,72 +29,33 @@
 
 <script>
     /*
-    Salesforce ID sample:
+    Salesforce ID samples:
+    1. 
         Input: 9062I000000ITnk
         Expected Output: 9062I000000ITnkQAG
-document.querySelector("div#input-section").querySelectorAll("input").forEach( g => g.value = null );
+
+    2. 
         Input: 90630000000gtfA
         Expected: 90630000000gtfAAAQ
     */
 
+    // Page constants.
     const inputEl = document.querySelector("#id-input");
     const outputEl = document.querySelector("#sample-output");
     const inputSection = document.querySelector("div#input-section");
 
-
+    // Clear inputs on form.
     function clearInputs() {
         inputSection.querySelectorAll("input").forEach( g => g.value = null );
         inputEl.focus();
     }
 
 
-    // Set alphanumeric list
-    let codeList = [];
-    function setCodeList() {
-
-        let j = 65;
-        let k = 0;
-        const alphaStopIdx = 91;
-        while (j < 97) { 
-            j < alphaStopIdx ? codeList.push(String.fromCharCode(j)) : codeList.push(`${j - alphaStopIdx}`);
-            j++;
-            k++;
-        }
-    }
-
-    function IdConverter(SfidObj) {
-        if (SfidObj.length === 15) {
-            let i = 0;
-            const stepsize = 5;
-            let letters = "";
-
-            while (i < SfidObj.length) {
-                let chunk = SfidObj.slice(i, i + stepsize);
-                let idx = 0;
-                let tot = 0;
-                chunk.split("").forEach( el => {
-                    tot += el.isUpper ? Math.pow(2, idx) : 0;
-                    idx++;
-                });
-                letters += codeList[tot];
-                i += stepsize;
-            }
-
-            SfidObj += letters;
-            console.assert(SfidObj.length === 18, `Error: NewId character count mismatch.`);
-            
-        }
-        return SfidObj;
-    }
-
     function ConvertID() {
         let newID = IdConverter(inputEl.value);
         document.querySelector("#id-output").value = newID;
     }
 
-    window.addEventListener("DOMContentLoaded", () => {
-        setCodeList();
-    });
 
     //function updateOutput() {
     //    outputEl.textContent = (inputEl.value === "" || inputEl.value === null ) ? "" : `You typed: ${inputEl.value}`; 
