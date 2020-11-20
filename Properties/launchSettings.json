@@ -23,7 +23,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "dotnet run": {
+    "dotnetrun": {
       "commandName": "Project",
       "commandLineArgs": "--server.urls http://*:8080",
       "launchBrowser": true,
