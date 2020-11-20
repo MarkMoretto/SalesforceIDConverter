@@ -1,30 +1,31 @@
-﻿@page
+@page
 @model SalesforceIDConverter.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var txtPageHeader = "Convert an ID!";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to App!</h1>
+<div class="page-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">@(txtPageHeader)</h1>
 </div>
 
 
-<div id="input-section" class="mb-2 justify-content-center">
-    <div class="pr-2">
-        <label for="sfid-input">Salesforce ID: </label>
-        <input type="text" id="id-input" name="sfid-input" />
+<!--<div id="input-section" class="mb-2 justify-content-center">-->
+<div id="input-section" class="d-grid col-2 mx-auto mb-3">    
+    <div>
+        <label for="sfid-input" class="form-label">Salesforce ID</label>
+        <input type="text" class="form-control" id="id-input" name="sfid-input">
     </div>
     <br />
-    <div class="pr-2">
-        <label for="sfid-out">Result: </label>
-        <input type="text" id="id-output" name="sfid-out" disabled="true" value="" />
+    <div>
+        <label for="sfid-out" class="form-label">Result</label>
+        <input type="text" class="form-control" id="id-output" name="sfid-out" disabled="true" value="" />
     </div>
     <span id="sample-output"></span>
 </div>
 
 
-<div>
-    <label>&nbsp;</label>
+<div class="d-grid gap-1 col-2 mx-auto">
     <input type="button" class="btn btn-submit" value="Submit" onclick="convertSFID(); return false;" />
     <input type="button" class="btn btn-cancel" value="Clear" onclick="clearInputs(); return false;"/>
 </div>
@@ -47,6 +48,13 @@
         let newID = IdConverter(inputEl.value);
         document.querySelector("#id-output").value = newID;
     }
+
+    /**
+    * Set code list when DOM content completes loading.
+    */
+    window.addEventListener("DOMContentLoaded", () => {
+        inputEl.focus();
+    });    
  
 
 </script>

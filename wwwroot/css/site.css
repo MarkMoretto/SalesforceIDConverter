@@ -2,10 +2,25 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
+    text-align: center;
+    word-break: break-all;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.page-header {
+    max-width: 700px;
+}
+
+/*
+a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
+*/
 
 /* Provide sufficient contrast against white background */
 a {
