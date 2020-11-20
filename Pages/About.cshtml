@@ -2,12 +2,15 @@
 @model SalesforceIDConverter.Pages.AboutModel
 @{
     ViewData["Title"] = "About";
-    var titleText = "About the App";
+    var txtPageHeader = "About the App";
+    var bigcontent = "This is a simple ASP.NET app to convert Salesforce IDs that are 15-characters long into an 18-character ID.";
+
 }
 
-
-<div class="text-center">
-    <h1 class="display-4">@(titleText)</h1>
+<div class="page-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">@(txtPageHeader)</h1>
 </div>
 
-
+<div id="main-about-section" class="d-grid col-8 mx-auto mb-3">
+    <p>@(bigcontent)</p>
+</div>
